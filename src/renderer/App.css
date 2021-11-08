@@ -3,22 +3,21 @@
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
 body {
-  position: relative;
+  margin: 0;
+  padding: 0;
   color: white;
-  height: 100vh;
-  background: linear-gradient(
+  background-color: #161616;
+  /* background: linear-gradient(
     200.96deg,
     #fedc2a -29.09%,
     #dd5789 51.77%,
     #7a2c9e 129.35%
-  );
-  font-family: sans-serif;
-  overflow-y: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ); */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  /* overflow-y: hidden; */
 }
-
+/*
 button {
   background-color: white;
   padding: 10px 20px;
@@ -59,4 +58,180 @@ a:hover {
   justify-content: center;
   align-items: center;
   margin: 20px 0;
+} */
+
+#views {
+  position: relative;
+}
+
+.page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+}
+
+.browserWindow {
+  position: fixed;
+  margin: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0;
+  width: 100vw;
+  height: calc(100% - 41px);
+}
+
+.tabs-container {
+  width: 100vw;
+  height: 41px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.tabs-container-wrapper {
+  display: flex;
+  margin-left: 100px;
+}
+
+.tab:active {
+  background-color: rgb(49, 49, 49);
+}
+
+.content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: 100vw;
+}
+
+.tabSel {
+  display: none;
+}
+
+.content1 {
+  opacity: 0;
+  z-index: 1;
+}
+
+.tabSel:checked ~ .content1 {
+  opacity: 1;
+  z-index: 2;
+}
+
+.control1 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+/* .tabSel:active .control1 {
+  opacity: 1;
+  z-index: 2;
+} */
+
+.tab {
+  position: relative;
+  background-color: rgb(32, 32, 32);
+  border-radius: 5px;
+  margin: 0 3px;
+  padding: 0 10px;
+  height: 35px;
+  min-width: 165px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  transition: all 0.6s;
+}
+
+.tab-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  transition: all 0.6s;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  background-color: rgb(41, 41, 41);
+  width: 10px;
+  height: 25px;
+  border-radius: 5px;
+  right: 10px;
+  top: 50%;
+  transform: translate(0px, -50%);
+  z-index: 1;
+}
+
+.tab::before {
+  content: '';
+  position: absolute;
+  /* background-color: rgb(241, 0, 0); */
+  width: 10px;
+  height: 35px;
+  border-left: 4px solid rgb(39, 39, 39);
+  border-radius: 100px;
+  left: 0px;
+  top: 50%;
+  transform: translate(0px, -50%);
+  z-index: 1;
+}
+
+.urlTitle {
+  position: absolute;
+  display: inline-block;
+  /* background-color: rgba(255, 0, 0, 0.26); */
+  /* min-width: 170px; */
+  white-space: nowrap;
+  overflow: hidden;
+  top: 50%;
+  width: 115px;
+  margin-left: 15px;
+  transform: translate(3px, -55%);
+  transition: all 0.6s;
+}
+
+.urlIcon {
+  position: absolute;
+  display: inline-block;
+}
+
+.url {
+  /* position: absolute; */
+  /* display: none; */
+  margin-left: 137.5px;
+  color: #c7c7c7;
+  background-color: rgb(37, 37, 37);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  height: 24px;
+  /* top: 50%; */
+  padding: 0 0 0 10px;
+
+  width: 0px;
+  transform: translate(3px, 0);
+  transition: all 0.6s;
+}
+
+.url:focus {
+  width: 600px;
+  margin-left: -6px;
+  /* height: 40px; */
+  z-index: 10;
+}
+
+.favicon1 {
+  width: 13px;
+  margin-top: 50%;
+  transform: translate(0px, -4%);
 }

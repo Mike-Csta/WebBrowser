@@ -6,7 +6,16 @@
   </head>
   <body>
     <div id="root"></div>
+    <div id="views">
+      <!-- <webview
+        src="http://www.google.com/"
+        autosize="on"
+        class="page"
+        style="width: 1280; height: 720"
+      ></webview> -->
+    </div>
   </body>
+
   <script>
     window.electron.ipcRenderer.once('ipc-example', (arg) => {
       // eslint-disable-next-line no-console
