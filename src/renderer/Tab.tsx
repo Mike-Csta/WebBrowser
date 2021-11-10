@@ -1,5 +1,8 @@
-const WebView = require('react-electron-web-view');
+import WebView from 'react-electron-web-view';
+
 import { useRef, useState } from 'react';
+
+import reload from './reload.png';
 import { useEventListener } from 'usehooks-ts';
 
 // var favicon = require('favicon-getter').default;
@@ -17,12 +20,21 @@ const Tab = ({ title }: CardProps) => {
   console.log(title);
 
   var back = useRef(null);
+  var tab = useRef(null);
   var view = useRef(null);
   var omni = useRef(null);
   var urlTitle = useRef(null);
 
+  function reloadView() {
+    view.current.reload();
+  }
+
   function backView() {
     view.current.goBack();
+  }
+
+  function forwardView() {
+    view.current.goForward();
   }
 
   function updateURL(event) {
@@ -35,8 +47,21 @@ const Tab = ({ title }: CardProps) => {
         view.current.loadURL(val);
       } else if (http === 'http://') {
         view.current.loadURL(val);
-      } else {
+      } else if (
+        val.includes(
+          '.pl' ||
+            '.com' ||
+            '.eu' ||
+            '.edu' ||
+            '.gov' ||
+            '.net' ||
+            '.info' ||
+            '.org'
+        )
+      ) {
         view.current.loadURL('http://' + val);
+      } else {
+        view.current.loadURL('https://www.google.com/search?q=' + val);
       }
     }
   }
@@ -45,27 +70,31 @@ const Tab = ({ title }: CardProps) => {
     'https://s2.googleusercontent.com/s2/favicons?domain_url=google.pl'
   );
 
-  function updateNav() {
-    omni.current.value = view.current.getURL();
-    urlTitle.current.innerHTML = view.current.getTitle();
-    setFavicon(
-      'https://s2.googleusercontent.com/s2/favicons?domain_url=' +
-        view.current.getURL()
-    );
+  function updateTitle() {
+    if (tab.current.innerHTML !== '') {
+      console.log('asdadsd');
 
-    console.log(favicon);
+      urlTitle.current.innerHTML = view.current.getTitle();
+      setFavicon(
+        'https://s2.googleusercontent.com/s2/favicons?domain_url=' +
+          view.current.getURL()
+      );
+
+      // console.log(favicon);
+    }
   }
 
-  useEventListener('mousemove', updateNav);
+  function updateUrl() {
+    if (tab.current.innerHTML !== '') {
+      omni.current.value = view.current.getURL();
+    }
+  }
+  setInterval(updateTitle, 2000);
+  useEventListener('mousemove', updateUrl);
+
   const [src, setSrc] = useState('https://www.google.com');
 
   console.log(setSrc);
-
-  // useEffect(() => {
-  //   // Zaktualizuj tytuł dokumentu korzystając z interfejsu API przeglądarki
-
-  //   console.log('asdasd');
-  // }, [view]);
 
   // favicon = function () {
   //   var favimage = document.createElement('img');
@@ -73,9 +102,11 @@ const Tab = ({ title }: CardProps) => {
   //   favimage.className = 'favicon';
   //   return favimage;
   // };
-
+  const deleteContent = () => {
+    tab.current.innerHTML = '';
+  };
   return (
-    <div>
+    <div ref={tab}>
       <label>
         <div className="tab">
           <div className="tab-wrapper">
@@ -96,19 +127,48 @@ const Tab = ({ title }: CardProps) => {
               />
             </div>
             <div className="content content1">
-              <button className="control1" onClick={backView} ref={back}>
-                back
-              </button>
+              <div className="control">
+                <div className="b ct">
+                  {' '}
+                  <img
+                    src="https://www.nicepng.com/png/full/266-2660273_expand-slideshow-white-back-icon-png.png"
+                    className="control1 "
+                    onClick={backView}
+                    ref={back}
+                  />
+                </div>
+                <div className="f ct">
+                  {' '}
+                  <img
+                    src="https://www.nicepng.com/png/full/266-2660273_expand-slideshow-white-back-icon-png.png"
+                    className="control1"
+                    onClick={forwardView}
+                    ref={back}
+                  />
+                </div>
+
+                <div className="r ct">
+                  {' '}
+                  <img
+                    src={reload}
+                    className="control1 "
+                    onClick={reloadView}
+                    ref={back}
+                  />
+                </div>
+              </div>
+
               <WebView
                 ref={view}
                 className="browserWindow"
-                preload="./__insert.js"
+                // preload="./__insert.js"
                 src={src}
               />
             </div>
           </div>
         </div>
       </label>
+      <div className="delTab" onClick={deleteContent}></div>
     </div>
   );
 };

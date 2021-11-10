@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Tab from './Tab';
 
 const Demo = () => {
-  const cardss = ['jeden', 'dwa'];
+  let cardss = ['jeden', 'dwa'];
 
   const [cards, setCards] = useState(cardss);
 
@@ -13,17 +13,27 @@ const Demo = () => {
 
   const addCard = () => {
     setCards([...cards, 'xD']);
+    cardss = cards;
   };
+
+  // const deleteCard = (id) => {
+  //   setCards(
+  //     cards.filter((item, index) => index !== id || item == 'GlupiTypescriptxD')
+  //   );
+  //   console.log();
+  // };
 
   return (
     <>
       <div className="tabs-container">
         <div className="tabs-container-wrapper">
-          {cards.map((e) => (
-            <Tab title={e} />
+          {cards.map((e, id) => (
+            <div className="preTab">
+              <Tab title={e} key={id} />
+            </div>
           ))}
           <div onClick={addCard} className="add">
-            +
+            <div className="add-wrapper">+</div>
           </div>
         </div>
       </div>
