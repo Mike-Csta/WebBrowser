@@ -3,10 +3,13 @@
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
 body {
+  position: absolute;
   margin: 0;
   padding: 0;
   color: white;
-  background-color: #161616;
+
+  border-radius: 50px;
+  /* background-color: #161616; */
   /* background: linear-gradient(
     200.96deg,
     #fedc2a -29.09%,
@@ -76,6 +79,17 @@ a:hover {
 }
 
 .browserWindow {
+  position: absolute;
+  margin: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0;
+  width: 100vw;
+  height: calc(100% - 0px);
+  /* border-radius: 50px 50px 50px 50px; */
+}
+
+.browserRadius {
   position: fixed;
   margin: 0;
   left: 0;
@@ -83,6 +97,8 @@ a:hover {
   padding: 0;
   width: 100vw;
   height: calc(100% - 41px);
+  border-radius: 0px 0px 12px 12px;
+  overflow: hidden;
 }
 
 .tabs-container {
@@ -105,6 +121,10 @@ a:hover {
   background-color: rgb(49, 49, 49);
 }
 
+.tab:hover {
+  background-color: rgb(37, 37, 37);
+}
+
 .content {
   position: absolute;
   left: 0;
@@ -125,6 +145,8 @@ a:hover {
   opacity: 1;
   z-index: 2;
 }
+
+/* zmiana koloru chccked i animacja optwierania */
 
 .control {
   position: fixed;
@@ -184,7 +206,7 @@ a:hover {
   position: relative;
   background-color: rgb(32, 32, 32);
   border-radius: 5px;
-  margin: 0 3px;
+  margin: 1.5px;
   padding: 0 10px;
   height: 35px;
   min-width: 165px;
@@ -340,4 +362,10 @@ a:hover {
     min-width: 165px;
     max-width: 1650px;
   }
+}
+
+.container {
+  background-color: #161616;
+  overflow: hidden;
+  border-radius: 12px 12px 00px 00px;
 }

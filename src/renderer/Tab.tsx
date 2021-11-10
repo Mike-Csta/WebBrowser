@@ -108,7 +108,7 @@ const Tab = ({ title }: CardProps) => {
   return (
     <div ref={tab}>
       <label>
-        <div className="tab">
+        <div className="tab ">
           <div className="tab-wrapper">
             <input className="tabSel" type="radio" name="tab" id="tab" />
             <div className="title">
@@ -157,13 +157,14 @@ const Tab = ({ title }: CardProps) => {
                   />
                 </div>
               </div>
-
-              <WebView
-                ref={view}
-                className="browserWindow"
-                // preload="./__insert.js"
-                src={src}
-              />
+              <div className="browserRadius">
+                <WebView
+                  ref={view}
+                  className="browserWindow"
+                  // preload="./__insert.js"
+                  src={src}
+                />
+              </div>
             </div>
           </div>
         </div>

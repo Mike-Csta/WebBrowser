@@ -13,10 +13,14 @@ const Hello = () => {
   // document.body.appendChild(WebView);
 
   return (
-    <div className="container">
-      <Tabs />
-      {/* <div className="Hello">test</div> */}
-    </div>
+    <body>
+      <div>
+        <div className="container">
+          <Tabs />
+          {/* <div className="Hello">test</div> */}
+        </div>
+      </div>
+    </body>
   );
 };
 
