@@ -1,7 +1,5 @@
 import WebView from 'react-electron-web-view';
-
 import { useRef, useState } from 'react';
-
 import reload from './reload.png';
 import { useEventListener } from 'usehooks-ts';
 
@@ -18,7 +16,8 @@ type CardProps = {
 
 const Tab = ({ title }: CardProps) => {
   console.log(title);
-
+  var preTab = useRef(null);
+  var tabb = useRef(null);
   var back = useRef(null);
   var tab = useRef(null);
   var view = useRef(null);
@@ -72,8 +71,6 @@ const Tab = ({ title }: CardProps) => {
 
   function updateTitle() {
     if (tab.current.innerHTML !== '') {
-      console.log('asdadsd');
-
       urlTitle.current.innerHTML = view.current.getTitle();
       setFavicon(
         'https://s2.googleusercontent.com/s2/favicons?domain_url=' +
@@ -81,95 +78,117 @@ const Tab = ({ title }: CardProps) => {
       );
 
       // console.log(favicon);
+      if (omni.current != document.activeElement) {
+        preTab.current.style.maxWidth = '185px';
+        omni.current.blur();
+      }
     }
   }
 
   function updateUrl() {
-    if (tab.current.innerHTML !== '') {
+    if (
+      tab.current.innerHTML !== '' &&
+      omni.current != document.activeElement
+    ) {
       omni.current.value = view.current.getURL();
     }
   }
-  setInterval(updateTitle, 2000);
+  setInterval(updateTitle, 500);
   useEventListener('mousemove', updateUrl);
 
-  const [src, setSrc] = useState('https://www.google.com');
+  const [src] = useState('https://www.google.com');
 
-  console.log(setSrc);
-
-  // favicon = function () {
-  //   var favimage = document.createElement('img');
-  //   favimage.src = this.icon;
-  //   favimage.className = 'favicon';
-  //   return favimage;
-  // };
   const deleteContent = () => {
+    preTab.current.style.display = 'none';
     tab.current.innerHTML = '';
   };
-  return (
-    <div ref={tab}>
-      <label>
-        <div className="tab ">
-          <div className="tab-wrapper">
-            <input className="tabSel" type="radio" name="tab" id="tab" />
-            <div className="title">
-              <div className="urlIcon">
-                <img src={favicon} alt="asda" className="favicon1" />
-              </div>
-              <div className="urlTitle" ref={urlTitle}>
-                Google
-              </div>
-              <input
-                type="text"
-                ref={omni}
-                id="url"
-                className="url"
-                onKeyDown={updateURL}
-              />
-            </div>
-            <div className="content content1">
-              <div className="control">
-                <div className="b ct">
-                  {' '}
-                  <img
-                    src="https://www.nicepng.com/png/full/266-2660273_expand-slideshow-white-back-icon-png.png"
-                    className="control1 "
-                    onClick={backView}
-                    ref={back}
-                  />
-                </div>
-                <div className="f ct">
-                  {' '}
-                  <img
-                    src="https://www.nicepng.com/png/full/266-2660273_expand-slideshow-white-back-icon-png.png"
-                    className="control1"
-                    onClick={forwardView}
-                    ref={back}
-                  />
-                </div>
 
-                <div className="r ct">
-                  {' '}
-                  <img
-                    src={reload}
-                    className="control1 "
-                    onClick={reloadView}
-                    ref={back}
+  const sizeUp = () => {
+    preTab.current.style.maxWidth = '640px';
+  };
+
+  // const sizeDown = () => {
+  //   if (omni.current != document.activeElement) {
+  //     preTab.current.style.maxWidth = '185px';
+  //     omni.current.blur();
+  //   }
+  // };
+
+  useEventListener('click', sizeUp, omni);
+
+  // useEventListener('mouseleave', sizeDown, preTab);
+  // useEventListener('mousemove', sizeDown, view);
+
+  return (
+    <div className="preTab" ref={preTab}>
+      <div ref={tab}>
+        <label>
+          <div className="tab" ref={tabb}>
+            <div className="tab-wrapper">
+              <input
+                className="tabSel"
+                type="radio"
+                name="tab"
+                id="tab"
+                defaultChecked
+              />
+              <div className="title">
+                <div className="urlIcon">
+                  <img src={favicon} alt="asda" className="favicon1" />
+                </div>
+                <div className="urlTitle" ref={urlTitle}>
+                  Google
+                </div>
+                <input
+                  type="text"
+                  ref={omni}
+                  id="url"
+                  className="url"
+                  onKeyDown={updateURL}
+                />
+              </div>
+              <div className="content content1">
+                <div className="control">
+                  <div className="b ct">
+                    <img
+                      src="https://www.nicepng.com/png/full/266-2660273_expand-slideshow-white-back-icon-png.png"
+                      className="control1 "
+                      onClick={backView}
+                      ref={back}
+                    />
+                  </div>
+                  <div className="f ct">
+                    <img
+                      src="https://www.nicepng.com/png/full/266-2660273_expand-slideshow-white-back-icon-png.png"
+                      className="control1"
+                      onClick={forwardView}
+                      ref={back}
+                    />
+                  </div>
+
+                  <div className="r ct">
+                    <img
+                      src={reload}
+                      className="control1 "
+                      onClick={reloadView}
+                      ref={back}
+                    />
+                  </div>
+                </div>
+                <div className="browserRadius">
+                  <WebView
+                    ref={view}
+                    className="browserWindow"
+                    // preload="./__insert.js"
+                    src={src}
                   />
                 </div>
-              </div>
-              <div className="browserRadius">
-                <WebView
-                  ref={view}
-                  className="browserWindow"
-                  // preload="./__insert.js"
-                  src={src}
-                />
               </div>
             </div>
           </div>
-        </div>
-      </label>
-      <div className="delTab" onClick={deleteContent}></div>
+        </label>
+        <div className="delTab" onClick={deleteContent}></div>
+      </div>
     </div>
   );
 };

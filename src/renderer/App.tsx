@@ -1,19 +1,20 @@
 import { MemoryRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-
+// const { ipcRenderer } = window.require('electron');
 import Tabs from './tabs';
 
 // let root = document.getElementById('root')!;
 
 const Hello = () => {
-  // const WebView = document.createElement('webview');
-  // WebView.setAttribute('src', 'http://www.google.com/');
-  // WebView.setAttribute('autosize', 'on');
-  // WebView.setAttribute('class', 'page');
-  // document.body.appendChild(WebView);
+  // const closee = () => {
+  //   ipcRenderer.send('close-window');
+  // };
 
   return (
     <body>
+      {/* <div onClick={closee}>
+        asdadsfsfsdfsdfsdfdfsdfsdfsdfsdfsdfsdfsdfsdfsdffsdfsdfsfsdffd
+      </div> */}
       <div>
         <div className="container">
           <Tabs />

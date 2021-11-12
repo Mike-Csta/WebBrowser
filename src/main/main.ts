@@ -1,5 +1,11 @@
 /* eslint global-require: off, no-console: off, promise/always-return: off */
 
+declare global {
+  interface Window {
+    any;
+  }
+}
+
 /**
  * This module executes inside of electron's main process. You can start
  * electron renderer process from here and communicate with the other processes
@@ -74,7 +80,11 @@ const createWindow = async () => {
   };
 
   mainWindow = new BrowserWindow({
-    transparent: true,
+    titleBarStyle: 'hidden',
+    titleBarOverlay: {
+      color: '#161616',
+      symbolColor: '#303030',
+    },
     show: false,
     width: 1024,
     height: 728,
@@ -83,6 +93,7 @@ const createWindow = async () => {
     webPreferences: {
       webviewTag: true,
       nodeIntegration: true,
+      contextIsolation: false,
       // preload: path.join(__dirname, 'preload.js'),
     },
   });
@@ -141,3 +152,7 @@ app
     });
   })
   .catch(console.log);
+
+ipcMain.on('close-window', () => {
+  window.close();
+});

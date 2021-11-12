@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 // const WebView = require('react-electron-web-view');
+// import { useEventListener } from 'usehooks-ts';
+// import Draggable from 'react-draggable';
 import Tab from './Tab';
 
 const Demo = () => {
-  let cardss = ['jeden', 'dwa'];
+  let cardss = ['jeden'];
 
   const [cards, setCards] = useState(cardss);
 
@@ -16,21 +18,20 @@ const Demo = () => {
     cardss = cards;
   };
 
-  // const deleteCard = (id) => {
-  //   setCards(
-  //     cards.filter((item, index) => index !== id || item == 'GlupiTypescriptxD')
-  //   );
-  //   console.log();
+  const slider = useRef(null);
+
+  // const dragging = (e) => {
+  //   console.log(e.pageX);
   // };
+
+  // useEventListener('mousedown', dragging, slider.current);
 
   return (
     <>
       <div className="tabs-container">
-        <div className="tabs-container-wrapper">
+        <div ref={slider} className="tabs-container-wrapper">
           {cards.map((e, id) => (
-            <div className="preTab">
-              <Tab title={e} key={id} />
-            </div>
+            <Tab title={e} key={id} />
           ))}
           <div onClick={addCard} className="add">
             <div className="add-wrapper">+</div>
