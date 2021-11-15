@@ -1,6 +1,7 @@
 .tabs-container {
   width: 100vw;
   height: 41px;
+
   background-color: rgb(22, 22, 22);
   display: flex;
   z-index: 100000000000;
@@ -40,4 +41,45 @@
 
 .add-wrapper:hover {
   background-color: rgba(61, 61, 61, 0.13);
+}
+
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgb(255, 0, 118);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 118, 1) 0%,
+    rgba(0, 87, 255, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+  letter-spacing: 10px;
+  opacity: 1;
+  animation: logo 2s 0.3s forwards;
+  font-weight: 600;
+}
+
+@keyframes logo {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.logo1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgb(26, 26, 26);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+  letter-spacing: 10px;
+  font-weight: 600;
 }

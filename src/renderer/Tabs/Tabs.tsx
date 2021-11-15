@@ -20,6 +20,9 @@ const Demo = () => {
   return (
     <>
       <div className="tabs-container">
+        {' '}
+        <div className="logo1">SLIGHTY</div>
+        <div className="logo">SLIGHTY</div>
         <div ref={slider} className="tabs-container-wrapper">
           {cards.map((e, id) => (
             <Tab title={e} key={id} />

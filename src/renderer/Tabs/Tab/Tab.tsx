@@ -24,6 +24,7 @@ const Tab = ({ title }: CardProps) => {
 
   function backView() {
     view.current.goBack();
+    view.current.setZoomFactor(1);
   }
 
   function forwardView() {
