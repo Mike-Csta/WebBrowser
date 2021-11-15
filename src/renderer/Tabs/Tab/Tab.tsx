@@ -37,22 +37,26 @@ const Tab = ({ title }: CardProps) => {
       let https = val.slice(0, 8).toLowerCase();
       let http = val.slice(0, 7).toLowerCase();
       if (https === 'https://') {
+        //tu z niewiadomych przyzczyn w żaden sposób nie działało OR "||" więc poszedłem na około
         view.current.loadURL(val);
       } else if (http === 'http://') {
         view.current.loadURL(val);
-      } else if (
-        val.includes(
-          '.pl' ||
-            '.com' ||
-            '.eu' ||
-            '.edu' ||
-            '.gov' ||
-            '.net' ||
-            '.info' ||
-            '.org'
-        )
-      ) {
-        view.current.loadURL('http://' + val);
+      } else if (val.includes('.pl')) {
+        view.current.loadURL('https://' + val);
+      } else if (val.includes('.com')) {
+        view.current.loadURL('https://' + val);
+      } else if (val.includes('.eu')) {
+        view.current.loadURL('https://' + val);
+      } else if (val.includes('.edu')) {
+        view.current.loadURL('https://' + val);
+      } else if (val.includes('.gov')) {
+        view.current.loadURL('https://' + val);
+      } else if (val.includes('.net')) {
+        view.current.loadURL('https://' + val);
+      } else if (val.includes('.org')) {
+        view.current.loadURL('https://' + val);
+      } else if (val.includes('.info')) {
+        view.current.loadURL('https://' + val);
       } else {
         view.current.loadURL('https://www.google.com/search?q=' + val);
       }

@@ -1,7 +1,7 @@
 {
   "name": "Slightly",
   "productName": "Slightly",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "przeglądarka internetowa autorstwa Mike Csta stworzona w 3 dni do portfolio",
   "main": "./dist/main/main.js",
   "author": {
