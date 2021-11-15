@@ -2,13 +2,7 @@ import WebView from 'react-electron-web-view';
 import { useRef, useState } from 'react';
 import reload from './reload.png';
 import { useEventListener } from 'usehooks-ts';
-
-// var favicon = require('favicon-getter').default;
-// var jsonfile = require('jsonfile');
-// var favicon = require('favicon-getter').default;
-// var path = require('path');
-// var uuid = require('uuid');
-// var bookmarks = path.join(__dirname, 'bookmarks.json');
+import './Tab.css';
 
 type CardProps = {
   title: string;
@@ -69,14 +63,19 @@ const Tab = ({ title }: CardProps) => {
     'https://s2.googleusercontent.com/s2/favicons?domain_url=google.pl'
   );
 
+  let downloadFavicon = new Image();
+  downloadFavicon.onload = function () {
+    setFavicon(
+      'https://s2.googleusercontent.com/s2/favicons?domain_url=' +
+        view.current.getURL()
+    );
+  };
+
   function updateTitle() {
     if (tab.current.innerHTML !== '') {
       urlTitle.current.innerHTML = view.current.getTitle();
-      setFavicon(
-        'https://s2.googleusercontent.com/s2/favicons?domain_url=' +
-          view.current.getURL()
-      );
-
+      downloadFavicon.src =
+        'https://s2.googleusercontent.com/s2/favicons?domain_url=google.pl';
       // console.log(favicon);
       if (omni.current != document.activeElement) {
         preTab.current.style.maxWidth = '185px';
@@ -104,20 +103,10 @@ const Tab = ({ title }: CardProps) => {
   };
 
   const sizeUp = () => {
-    preTab.current.style.maxWidth = '640px';
+    preTab.current.style.maxWidth = '585px';
   };
 
-  // const sizeDown = () => {
-  //   if (omni.current != document.activeElement) {
-  //     preTab.current.style.maxWidth = '185px';
-  //     omni.current.blur();
-  //   }
-  // };
-
   useEventListener('click', sizeUp, omni);
-
-  // useEventListener('mouseleave', sizeDown, preTab);
-  // useEventListener('mousemove', sizeDown, view);
 
   return (
     <div className="preTab" ref={preTab}>
@@ -149,7 +138,7 @@ const Tab = ({ title }: CardProps) => {
               </div>
               <div className="content content1">
                 <div className="control">
-                  <div className="b ct">
+                  <div className="backButton controlBar">
                     <img
                       src="https://www.nicepng.com/png/full/266-2660273_expand-slideshow-white-back-icon-png.png"
                       className="control1 "
@@ -157,7 +146,7 @@ const Tab = ({ title }: CardProps) => {
                       ref={back}
                     />
                   </div>
-                  <div className="f ct">
+                  <div className="forwardsButton controlBar">
                     <img
                       src="https://www.nicepng.com/png/full/266-2660273_expand-slideshow-white-back-icon-png.png"
                       className="control1"
@@ -166,7 +155,7 @@ const Tab = ({ title }: CardProps) => {
                     />
                   </div>
 
-                  <div className="r ct">
+                  <div className="returnButton controlBar">
                     <img
                       src={reload}
                       className="control1 "

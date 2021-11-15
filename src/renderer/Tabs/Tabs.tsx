@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-// const WebView = require('react-electron-web-view');
-// import { useEventListener } from 'usehooks-ts';
-// import Draggable from 'react-draggable';
-import Tab from './Tab';
+import Tab from './Tab/Tab';
+import './Tabs.css';
 
 const Demo = () => {
   let cardss = ['jeden'];
@@ -19,13 +17,6 @@ const Demo = () => {
   };
 
   const slider = useRef(null);
-
-  // const dragging = (e) => {
-  //   console.log(e.pageX);
-  // };
-
-  // useEventListener('mousedown', dragging, slider.current);
-
   return (
     <>
       <div className="tabs-container">
