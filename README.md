@@ -1,7 +1,7 @@
 # SLIGHTLY
 
 Cześć! Jestem Mike Csta, a to mój hobbistyczny projekt - **SLIGHTLY**.\
- Stworzyłem go dla zabawy i jako sposób na rozwinięcie swoich umiejętności a tak na serio to se pomyślałem, że fajnie by było miec przeglądarke która będzie miała minimalistyczny wytgląd i taki właśnie fajnie rozwijany pasek.
+ Stworzyłem go dla zabawy i jako sposób na rozwinięcie swoich umiejętności a tak na serio to se pomyślałem, że fajnie by było mieć przeglądarkę, która będzie miała minimalistyczny wytgląd i taki właśnie fajnie rozwijany pasek.
 >  Tak wsumie to dla beki (młodzieżowe określenie na żarty) postanowiłem, że napisze ją w electron.js połączonym z react.js xD. To co tu zobaczysz, to wersja ALPHA przeglądarki, nad którą spędziłem wiele godzin. Teraz już nie rozwijam tego projektu, ale jestem ale miło go wspominam :)
 
 
