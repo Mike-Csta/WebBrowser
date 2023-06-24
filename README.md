@@ -13,5 +13,5 @@ https://github.com/Mike-Csta/WebBrowser/assets/92047998/94d0befc-5846-46d5-a347-
 Użyte technologie:
 - React.js
 - Electron.js]
-- Chromium/
-Fajnie, że tu zajrzałeś. Ten opis wcale nie został napisany przez AI.
+- Chromium
+> Fajnie, że tu zajrzałeś. Ten opis wcale nie został napisany przez AI.
