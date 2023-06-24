@@ -4,7 +4,8 @@
  \
  Stworzyłem go dla zabawy i jako sposób na rozwinięcie swoich umiejętności a tak na serio to se pomyślałem, że fajnie by było mieć przeglądarkę, która będzie miała minimalistyczny wytgląd i taki właśnie fajnie rozwijany pasek.
  
-\>  Tak wsumie to dla beki (młodzieżowe określenie na żarty) postanowiłem, że napisze ją w electron.js połączonym z react.js xD. To co tu zobaczysz, to wersja ALPHA przeglądarki, nad którą spędziłem wiele godzin. Teraz już nie rozwijam tego projektu, ale miło go wspominam :)
+\
+>  Tak wsumie to dla beki (młodzieżowe określenie na żarty) postanowiłem, że napisze ją w electron.js połączonym z react.js xD. To co tu zobaczysz, to wersja ALPHA przeglądarki, nad którą spędziłem wiele godzin. Teraz już nie rozwijam tego projektu, ale miło go wspominam :)
 
 
 https://github.com/Mike-Csta/WebBrowser/assets/92047998/94d0befc-5846-46d5-a347-3b5867cba76a
