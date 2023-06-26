@@ -2,7 +2,7 @@
 
  **SLIGHTLY** to mój hobbistyczny projekt, przeglądarka internetowa\
  \
-Pomyślałem, że fajnie by było mieć przeglądarkę, która będzie miała minimalistyczny wytgląd i taki właśnie fajnie rozwijany pasek.
+Pomyślałem, że fajnie by było mieć przeglądarkę, która będzie miała minimalistyczny wygląd i taki właśnie fajnie rozwijany pasek.
 
 
 >  Tak wsumie to dla beki (młodzieżowe określenie na żarty) postanowiłem, że napisze ją w electron.js połączonym z react.js xD. To co tu zobaczysz, to wersja ALPHA przeglądarki, nad którą spędziłem wiele godzin. Teraz już nie rozwijam tego projektu, ale miło go wspominam :)
